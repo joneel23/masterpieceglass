@@ -1349,7 +1349,8 @@ class Elementor_MP_Gallery extends Widget_Base {
           <i class="elementor-widget-empty-icon eicon-gallery-justified"></i>
         <?php }
 
-        $this->add_render_attribute( 'gallery_container', 'class', 'elementor-gallery__container e-gallery-container e-gallery-masonry e-gallery--ltr' );
+        //$this->add_render_attribute( 'gallery_container', 'class', 'elementor-gallery__container e-gallery-container e-gallery-masonry e-gallery--ltr' );
+        $this->add_render_attribute( 'gallery_container', 'class', 'grid' );
 
         if ( $has_title || $has_description ) {
             $this->add_render_attribute( 'gallery_item_content', 'class', 'elementor-gallery-item__content' );
@@ -1389,6 +1390,7 @@ class Elementor_MP_Gallery extends Widget_Base {
         //var_dump($galleries);
         if ( ! empty( $galleries ) ) { ?>
         <div <?php echo $this->get_render_attribute_string( 'gallery_container' ); ?>>
+            <div class="grid-sizer"></div>
             <?php
             foreach ( $gallery_items as $id => $tags ) :
                 $unique_index = $id; //$gallery_index . '_' . $index;
@@ -1410,8 +1412,7 @@ class Elementor_MP_Gallery extends Widget_Base {
 
                 $this->add_render_attribute( 'gallery_item_' . $unique_index, [
                     'class' => [
-                        '2-e-gallery-item',
-                        '2-elementor-gallery-item',
+                        'grid-item',
                     ],
                 ] );
 

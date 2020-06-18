@@ -14,6 +14,20 @@ Text Domain:  mx-child
 
 /* ============ start of button widgets ================ */
 
+/* fluid 5 columns */
+.grid-item,
+.grid-sizer {
+    width: 20%;
+}
+.grid-item {
+    float: left;
+    height: 100px;
+    background: #0D8;
+    border: 2px solid #333;
+    border-color: hsla(0, 0%, 0%, 0.7);
+}
+/* 2 columns */
+.grid-item--width2 { width: 40%; }
 
 .hero_img_btn{
     /* padding-top: .5em; */
