@@ -1,0 +1,168 @@
+/*
+Theme Name:   MX Child
+Theme URI:    http://themefocus.co/mx/
+Description:  A Child-Theme based on MX of powerful and clean theme.Designed by <a href="http://themefocus.co">ThemeFocus</a>
+Author:       ThemeFocus
+Author URI:   http://themefocus.co
+Template:     mx
+Version:      1.0.0
+License:      GNU General Public License v2.0 PHP under GNU General Public License, JS and CSS under ThemeForest License Terms
+License URI:  http://themeforest.net/licenses/regular_extended
+Tags:         black, green, white, orange, red
+Text Domain:  mx-child
+*/
+
+/* ============ start of button widgets ================ */
+
+
+.hero_img_btn{
+    /* padding-top: .5em; */
+    /* padding-right: 1.2em; */
+    /* padding-bottom: .5em; */
+    /* padding-left: 1.2em; */
+    padding: 23px 40px;
+    background: #009f8b;
+    font-size: 24px;
+    font-family: "Lora", sans-serif;
+    color: #fff;
+    font-weight: 300;
+    transition: 0.22s all;
+    border: 0px;
+    transition-delay: 0.2s;
+}
+
+.hero_img_btn:hover{
+    color: #009f8b;
+    background:transparent;
+    transition: 0.31s all;
+}
+.hero_img_btn:focus{
+    outline: none;
+}
+
+.hero_img_btn{
+    position: relative;
+    overflow: hidden!important;
+    /*background: rgba(255, 255, 255, 0.1);*/
+    /*box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);*/
+}
+
+.hero_img_btn:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, 0.1); */
+    /* transition: 0.2s all; */
+}
+
+.hero_img_btn:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,transparent, rgba(255,255,255,.4), transparent);
+    transition: 0.21s all;
+    transition-delay: 0.25s;
+}
+
+.hero_img_btn:hover:after{
+    left: 100%;
+    background:transparent;
+}
+
+.hero_img_btn span{
+    position: absolute;
+    display: block;
+    transition: 0.5s ease;
+}
+
+.hero_img_btn span:nth-child(1){
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: #009f8b;
+}
+
+.hero_img_btn:hover span:nth-child(1){
+    width: 100%;
+    transform: translateX(-93%);
+}
+
+.hero_img_btn span:nth-child(3){
+    bottom: 0;
+    left: 0;
+    width: 0px;
+    height: 2px;
+    background: #009f8b;
+}
+
+.hero_img_btn:hover span:nth-child(3){
+    width: 100%;
+    transform: translateX(93%);
+}
+
+
+.hero_img_btn span:nth-child(2){
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background: #009f8b;
+}
+
+.hero_img_btn:hover span:nth-child(2){
+    height: 100%;
+    transform: translateY(-70%);
+}
+
+.hero_img_btn span:nth-child(4){
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 0;
+    background: #009f8b;
+}
+
+.hero_img_btn:hover span:nth-child(4){
+    height: 100%;
+    transform: translateY(70%);
+}
+
+
+
+@media screen and (min-width:1109px ) and (max-width:1366px ){
+    #mp_glass_btn {
+        font-size: 168%!important;
+    }
+}
+
+
+@media screen and (min-width:1024px ) and (max-width:1108px ){
+    #mp_glass_btn {
+        font-size: 158%!important;
+    }
+}
+
+@media screen and (min-width:768px ) and (max-width:1023px ){
+    #mp_glass_btn {
+        font-size: 119%!important;
+    }
+}
+
+@media screen and (max-width:580px ){
+    #mp_glass_btn {
+        font-size: 130%!important;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+
+/* ================ end of button widget ======================== */
