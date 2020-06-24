@@ -1309,6 +1309,9 @@ class Elementor_MP_Gallery extends Widget_Base {
 
         $gallery_item_tag = ! empty( $settings['link_to'] ) ? 'a' : 'div';
 
+        //get columns
+        $columns = $settings['columns'];
+
         $galleries = [];
 
         if ( $is_multiple ) {
@@ -1324,21 +1327,24 @@ class Elementor_MP_Gallery extends Widget_Base {
                     }
                 }
             } ?>
-            <div <?php echo $this->get_render_attribute_string( 'titles-container' ); ?>>
-                <?php if ( $settings['show_all_galleries'] ) { ?>
-                    <a data-gallery-index="all" class="elementor-item elementor-gallery-title"><?php echo $settings['show_all_galleries_label']; ?></a>
-                <?php } ?>
+            <div class="filters">
+                <div <?php echo $this->get_render_attribute_string( 'titles-container' ); ?>>
+                    <div class="button-group js-radio-button-group" data-filter-group="title">
+                    <?php if ( $settings['show_all_galleries'] ) { ?>
+                        <button data-filter="" class="button is-checked elementor-item elementor-gallery-title"><?php echo $settings['show_all_galleries_label']; ?></button>
+                    <?php } ?>
 
-                <?php foreach ( $settings['galleries'] as $index => $gallery ) :
-                    if ( ! $gallery['multiple_gallery'] ) {
-                        continue;
-                    }
+                    <?php foreach ( $settings['galleries'] as $index => $gallery ) :
+                        if ( ! $gallery['multiple_gallery'] ) {
+                            continue;
+                        }
 
-                    $galleries[ $index ] = $gallery['multiple_gallery'];
-                    ?>
-                    <a data-gallery-index="<?php echo $index; ?>" class="elementor-item elementor-gallery-title"><?php echo $gallery['gallery_title']; ?></a>
-                    <?php
-                endforeach; ?>
+                        $galleries[ $index ] = $gallery['multiple_gallery'];
+                        ?>
+                        <button data-filter=".gal-item<?php echo $index; ?>" class="button elementor-item elementor-gallery-title"><?php echo $gallery['gallery_title']; ?></button>
+                        <?php
+                    endforeach; ?>
+                </div>
             </div>
             <?php
         } elseif ( $is_single ) {
@@ -1388,12 +1394,15 @@ class Elementor_MP_Gallery extends Widget_Base {
 //            $gallery_items = $shuffled_items;
 //        }
         //var_dump($galleries);
+
         if ( ! empty( $galleries ) ) { ?>
         <div <?php echo $this->get_render_attribute_string( 'gallery_container' ); ?>>
             <div class="grid-sizer"></div>
             <?php
             foreach ( $gallery_items as $id => $tags ) :
                 $unique_index = $id; //$gallery_index . '_' . $index;
+
+
                 $image_src = wp_get_attachment_image_src( $id, $thumbnail_size );
                 if ( ! $image_src ) {
                     continue;
@@ -1410,9 +1419,16 @@ class Elementor_MP_Gallery extends Widget_Base {
                     'title' => $attachment->post_title,
                 ];
 
+
+                foreach ($tags as &$index) {
+                    $index = 'gal-item'.$index;
+                }
+                $filter_title_index = implode( ' ', $tags );
+
                 $this->add_render_attribute( 'gallery_item_' . $unique_index, [
                     'class' => [
                         'grid-item',
+                        $filter_title_index,
                     ],
                 ] );
 
@@ -1421,7 +1437,7 @@ class Elementor_MP_Gallery extends Widget_Base {
                 }
 
                 if ( $is_multiple ) {
-                    $this->add_render_attribute( 'gallery_item_' . $unique_index, [ 'data-e-gallery-tags' => implode( ',', $tags ) ] );
+                    $this->add_render_attribute( 'gallery_item_' . $unique_index );
                 }
 
                 if ( 'a' === $gallery_item_tag ) {
@@ -1441,17 +1457,17 @@ class Elementor_MP_Gallery extends Widget_Base {
                 $this->add_render_attribute( 'gallery_item_image_' . $unique_index,
                     [
                         'class' => [
-                            '1-e-gallery-image',
+                            'iso-gallery-image',
                             '1-elementor-gallery-item__image',
                         ],
-                        'data-thumbnail' => $image_data['src'],
+                        'src' => $image_data['src'],
                         'data-width' => $image_data['width'],
                         'data-height' => $image_data['height'],
                         'alt' => $image_data['alt'],
                     ]
                 );?>
                 <<?php echo $gallery_item_tag; ?> <?php echo $this->get_render_attribute_string( 'gallery_item_' . $unique_index ); ?>>
-                <div <?php echo $this->get_render_attribute_string( 'gallery_item_image_' . $unique_index ); ?> ></div>
+                <img <?php echo $this->get_render_attribute_string( 'gallery_item_image_' . $unique_index ); ?> />
                 <?php if ( ! empty( $settings['overlay_background'] ) ) : ?>
                 <div <?php echo $this->get_render_attribute_string( 'gallery_item_background_overlay' ); ?>></div>
             <?php endif; ?>

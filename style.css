@@ -14,20 +14,44 @@ Text Domain:  mx-child
 
 /* ============ start of button widgets ================ */
 
-/* fluid 5 columns */
-.grid-item,
-.grid-sizer {
-    width: 20%;
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
 }
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+    width: 33.333%;
+
+}
+
+@media( max-width: 1100px ){
+    .grid-sizer,
+    .grid-item {
+        width: 50%;
+    }
+}
+
 .grid-item {
     float: left;
-    height: 100px;
-    background: #0D8;
-    border: 2px solid #333;
-    border-color: hsla(0, 0%, 0%, 0.7);
+    margin-bottom: 20px;
 }
-/* 2 columns */
-.grid-item--width2 { width: 40%; }
+/*.grid-item .iso-gallery-image{*/
+    /*background-position: center center;*/
+    /*background-size: cover;*/
+    /*width: 100%;*/
+    /*transform-origin: center top;*/
+/*}*/
+.grid-item img {
+    display: block;
+    width: 100%;
+    padding-right: 20px;
+
+}
 
 .hero_img_btn{
     /* padding-top: .5em; */
