@@ -43,7 +43,9 @@ jQuery(document).ready(function ($) {
         // set filter for group
         filters[ filterGroup ] = $button.attr('data-filter');
         // combine filters
+        console.log(filters);
         var filterValue = concatValues( filters );
+        console.log(filterValue);
         // set filter for Isotope
         $grid.isotope({ filter: filterValue });
     });
@@ -51,7 +53,7 @@ jQuery(document).ready(function ($) {
 // change is-checked class on buttons
     $('.button-group').each( function( i, buttonGroup ) {
         var $buttonGroup = $( buttonGroup );
-        $buttonGroup.on( 'click', 'button', function( event ) {
+        $buttonGroup.on( 'click', 'button, li', function( event ) {
             $buttonGroup.find('.is-checked').removeClass('is-checked');
             var $button = $( event.currentTarget );
             $button.addClass('is-checked');
@@ -59,9 +61,29 @@ jQuery(document).ready(function ($) {
     });
 
     //add alt attribute for filtering
-    $('.grid-item img').map(function(){
-        var alt = $(this).attr('alt');
-        $(this).parent().addClass(alt);
+    $('.grid-item').map(function(){
+        var ele_content = $(this).find('.elementor-gallery-item__title').length;
+        console.log(ele_content);
+        if( ele_content.toString() != "0" ){
+            $(this).addClass('item-content-bg');
+        }
+        var alt = $(this).find('img').attr('alt');
+        $(this).find('img').parent().addClass(alt);
+    });
+
+
+    $('.elementor-sub-title > span').on('click', function(event){
+
+        $( event.currentTarget ).parent().removeClass('is-checked');
+        var reset_sub_filter = {};
+        var main_filter = $('#main-filter-group').find('.is-checked').attr('data-filter');
+        //console.log(main_filter);
+        reset_sub_filter['title'] = main_filter;
+        var resetfilterValue = concatValues( reset_sub_filter );
+        //console.log(resetfilterValue);
+        $grid.isotope({ filter: resetfilterValue });
+        event.preventDefault();
+        event.stopPropagation();
     });
 
 // flatten object by concatting values

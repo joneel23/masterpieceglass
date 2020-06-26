@@ -1329,7 +1329,7 @@ class Elementor_MP_Gallery extends Widget_Base {
             } ?>
             <div class="filters">
                 <div <?php echo $this->get_render_attribute_string( 'titles-container' ); ?>>
-                    <div class="button-group js-radio-button-group" data-filter-group="title">
+                    <div class="button-group js-radio-button-group" id="main-filter-group" data-filter-group="title">
                     <?php if ( $settings['show_all_galleries'] ) { ?>
                         <button data-filter="" class="button is-checked elementor-item elementor-gallery-title"><?php echo $settings['show_all_galleries_label']; ?></button>
                     <?php } ?>
@@ -1344,6 +1344,12 @@ class Elementor_MP_Gallery extends Widget_Base {
                         <button data-filter=".gal-item<?php echo $index; ?>" class="button elementor-item elementor-gallery-title"><?php echo $gallery['gallery_title']; ?></button>
                         <?php
                     endforeach; ?>
+                    </div>
+                </div>
+                <div class="button-group js-radio-button-group" id="sub-filter-group" data-filter-group="sub-title">
+                    <li data-filter=".broken-window-panes" class="button elementor-sub-title">Broken Window Panes <span>x</span></li>
+                    <li data-filter=".window-failure" class="button elementor-sub-title">Window Failure <span>x</span></li>
+                    <li data-filter=".stained-glass-repair" class="button elementor-sub-title">Stained Glass Repair <span>x</span></li>
                 </div>
             </div>
             <?php
@@ -1359,7 +1365,7 @@ class Elementor_MP_Gallery extends Widget_Base {
         $this->add_render_attribute( 'gallery_container', 'class', 'grid' );
 
         if ( $has_title || $has_description ) {
-            $this->add_render_attribute( 'gallery_item_content', 'class', 'elementor-gallery-item__content' );
+            $this->add_render_attribute( 'gallery_item_content', 'class', 'istope-gallery-item__content' );
 
             if ( $has_title ) {
                 $this->add_render_attribute( 'gallery_item_title', 'class', 'elementor-gallery-item__title' );
@@ -1437,7 +1443,7 @@ class Elementor_MP_Gallery extends Widget_Base {
                 }
 
                 if ( $is_multiple ) {
-                    $this->add_render_attribute( 'gallery_item_' . $unique_index );
+                    //$this->add_render_attribute( 'gallery_item_' . $unique_index );
                 }
 
                 if ( 'a' === $gallery_item_tag ) {
@@ -1473,6 +1479,7 @@ class Elementor_MP_Gallery extends Widget_Base {
             <?php endif; ?>
                 <?php if ( $has_title || $has_description ) : ?>
                 <div <?php echo $this->get_render_attribute_string( 'gallery_item_content' ); ?>>
+                    <div class="isotope-content-wrap">
                     <?php if ( $has_title ) :
                         $title = $image_data[ $settings['overlay_title'] ];
                         if ( ! empty( $title ) ) : ?>
@@ -1485,6 +1492,7 @@ class Elementor_MP_Gallery extends Widget_Base {
                             <div <?php echo $this->get_render_attribute_string( 'gallery_item_description' ); ?>><?php echo $description; ?></div>
                         <?php endif;
                     endif; ?>
+                    </div>
                 </div>
             <?php endif; ?>
                 </<?php echo $gallery_item_tag; ?>>
