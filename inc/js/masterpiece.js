@@ -68,7 +68,7 @@ jQuery(document).ready(function ($) {
             $(this).addClass('item-content-bg');
         }
         var alt = $(this).find('img').attr('alt');
-        $(this).find('img').parent().addClass(alt);
+        $(this).find('img').parents('.grid-item').addClass(alt);
     });
 
 

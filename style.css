@@ -38,7 +38,7 @@ Text Domain:  mx-child
 
 .grid-item {
     float: left;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 /*.grid-item .iso-gallery-image{*/
     /*background-position: center center;*/
@@ -49,36 +49,10 @@ Text Domain:  mx-child
 .grid-item img {
     display: block;
     width: 100%;
-    padding-right: 20px;
-
 }
-#sub-filter-group{
-    text-align: center;
-    margin-bottom: 20px;
-}
-.elementor-sub-title{
+.isotope-content-container{
+    margin: 0 15px;
     position: relative;
-    display: inline-block;
-    margin: 0 2px;
-    background: #b8b8c3;
-    border-radius: 25px;
-    padding: 8px 30px;
-    z-index: 0;
-    cursor: pointer;
-}
-.elementor-sub-title > span:hover {
-    background: red;
-}
-.elementor-sub-title > span{
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    font-size: 12px;
-    z-index: 99;
-    opacity: 1;
-    color: white;
-    right: 10px;
-    cursor: pointer;
 }
 
 .hero_img_btn{
@@ -200,6 +174,23 @@ Text Domain:  mx-child
     transform: translateY(70%);
 }
 
+@media (max-width: 1100px) {
+    .isotope-content-container{
+        margin: 0 9px;
+    }
+    .grid-item {
+        margin-bottom: 20px;
+    }
+}
+
+@media( min-width: 1700px){
+    .isotope-content-container{
+        margin: 0 25px;
+    }
+    .grid-item {
+        margin-bottom: 50px;
+    }
+}
 
 
 @media screen and (min-width:1109px ) and (max-width:1366px ){
