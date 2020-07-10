@@ -66,15 +66,15 @@ Text Domain:  mx-child
     font-family: "Lora", sans-serif;
     color: #fff;
     font-weight: 300;
-    transition: 0.22s all;
+    transition: 0.22s all !important;
     border: 0px;
-    transition-delay: 0.2s;
+    transition-delay: 0.2s !important;
 }
 
 .hero_img_btn:hover{
     color: #009f8b;
     background:transparent;
-    transition: 0.31s all;
+    transition: 0.31s all !important;
 }
 .hero_img_btn:focus{
     outline: none;
@@ -106,8 +106,8 @@ Text Domain:  mx-child
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg,transparent, rgba(255,255,255,.4), transparent);
-    transition: 0.21s all;
-    transition-delay: 0.25s;
+    transition: 0.21s all !important;
+    transition-delay: 0.25s !important;
 }
 
 .hero_img_btn:hover:after{
@@ -118,7 +118,7 @@ Text Domain:  mx-child
 .hero_img_btn span{
     position: absolute;
     display: block;
-    transition: 0.5s ease;
+    transition: 0.5s ease !important;
 }
 
 .hero_img_btn span:nth-child(1){
@@ -172,52 +172,6 @@ Text Domain:  mx-child
 .hero_img_btn:hover span:nth-child(4){
     height: 100%;
     transform: translateY(70%);
-}
-
-@media (max-width: 1100px) {
-    .isotope-content-container{
-        margin: 0 9px;
-    }
-    .grid-item {
-        margin-bottom: 20px;
-    }
-}
-
-@media( min-width: 1700px){
-    .isotope-content-container{
-        margin: 0 25px;
-    }
-    .grid-item {
-        margin-bottom: 50px;
-    }
-}
-
-
-@media screen and (min-width:1109px ) and (max-width:1366px ){
-    #mp_glass_btn {
-        font-size: 168%!important;
-    }
-}
-
-
-@media screen and (min-width:1024px ) and (max-width:1108px ){
-    #mp_glass_btn {
-        font-size: 158%!important;
-    }
-}
-
-@media screen and (min-width:768px ) and (max-width:1023px ){
-    #mp_glass_btn {
-        font-size: 119%!important;
-    }
-}
-
-@media screen and (max-width:580px ){
-    #mp_glass_btn {
-        font-size: 130%!important;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
 }
 
 
