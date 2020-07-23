@@ -6,8 +6,10 @@
  */
 
 function custom_register_scripts(){
-    wp_enqueue_script('masterpice-js', get_stylesheet_directory_uri() . '/inc/js/masterpiece.js', array('jquery') ,'1.4.1', true);
+    wp_enqueue_script('masterpice-js', get_stylesheet_directory_uri() . '/inc/js/masterpiece.js', array('jquery') ,'1.4.2', true);
     wp_enqueue_script('isotope-js', get_stylesheet_directory_uri() . '/js-plugins/isotope.pkgd.min.js', array('jquery') ,'3.0.6', true);
+
+    wp_enqueue_style('global-style', get_stylesheet_directory_uri() . '/inc/style/global-css.css', array(), '1.1.5');
 }
 add_action('wp_enqueue_scripts','custom_register_scripts');
 
